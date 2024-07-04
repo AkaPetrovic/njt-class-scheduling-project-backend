@@ -1,4 +1,4 @@
-package rs.ac.bg.fon.njt.NJT.Project;
+package rs.ac.bg.fon.njt;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
