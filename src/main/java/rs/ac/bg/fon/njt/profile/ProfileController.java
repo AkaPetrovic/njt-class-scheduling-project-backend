@@ -21,9 +21,4 @@ public class ProfileController {
     public List<Profile> getAllProfiles(){
         return profileService.getAllProfiles();
     }
-
-//    @GetMapping(path = "/profiles/test")
-//    public void test(){
-//        profileService.test();
-//    }
 }

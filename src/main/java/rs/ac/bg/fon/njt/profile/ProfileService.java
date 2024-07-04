@@ -17,9 +17,4 @@ public class ProfileService {
     public List<Profile> getAllProfiles() {
         return profileRepository.findAll();
     }
-
-//    public void test() {
-//        Profile profile = new Profile("Aka", "aka123");
-//        profileRepository.save(profile);
-//    }
 }
