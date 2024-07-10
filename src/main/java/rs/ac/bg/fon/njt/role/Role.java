@@ -1,23 +1,28 @@
 package rs.ac.bg.fon.njt.role;
 
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import rs.ac.bg.fon.njt.profile.Profile;
 
+import java.util.List;
+
+@Entity
 public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+    @Column(name = "name", nullable = false)
     private String name;
+
+    @OneToMany(mappedBy="role")
+    List<Profile> profiles;
 
 
     public Role() {
     }
 
-    public Role(long id, String name) {
-        this.id = id;
+    public Role(String name) {
         this.name = name;
     }
 

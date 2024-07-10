@@ -1,25 +1,24 @@
 package rs.ac.bg.fon.njt.profile;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import rs.ac.bg.fon.njt.role.Role;
 
 @Entity
 public class Profile {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(name = "username", nullable = false)
     private String username;
+    @Column(name = "password", nullable = false)
     private String password;
 
-    public Profile() {
-    }
+    @ManyToOne
+    @JoinColumn(nullable = false,
+                foreignKey = @ForeignKey(name="FK_profile_role"))
+    private Role role;
 
-    public Profile(Long id, String username, String password) {
-        this.id = id;
-        this.username = username;
-        this.password = password;
+    public Profile() {
     }
 
     public Profile(String username, String password) {
