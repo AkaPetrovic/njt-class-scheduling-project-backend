@@ -9,7 +9,6 @@ import java.util.List;
 public class ProfileService {
     private final ProfileRepository profileRepository;
 
-    @Autowired
     public ProfileService(ProfileRepository profileRepository) {
         this.profileRepository = profileRepository;
     }
