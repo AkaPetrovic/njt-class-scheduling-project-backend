@@ -2,19 +2,23 @@ package rs.ac.bg.fon.njt.profile;
 
 import jakarta.persistence.*;
 import rs.ac.bg.fon.njt.role.Role;
+import rs.ac.bg.fon.njt.teachingStaff.TeachingStaff;
 
 import java.util.Objects;
 
 @Entity
+@Table(name = "profile", uniqueConstraints = {
+        @UniqueConstraint(columnNames = "teaching_staff_id", name = "UNIQUE_teaching_staff_id")
+})
 public class Profile {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "username", nullable = false)
+    @Column(name = "username", nullable = false, length = 30)
     private String username;
 
-    @Column(name = "password", nullable = false)
+    @Column(name = "password", nullable = false, length = 40)
     private String password;
 
     @ManyToOne
@@ -22,22 +26,22 @@ public class Profile {
                 foreignKey = @ForeignKey(name="FK_profile_role"))
     private Role role;
 
+    @OneToOne
+    @JoinColumn(name="teaching_staff_id",
+                nullable = false,
+                foreignKey = @ForeignKey(name="FK_profile_teaching_staff"))
+    private TeachingStaff teachingStaff;
+
 
 
     public Profile() {
     }
 
-    public Profile(String username, String password, Role role) {
+    public Profile(String username, String password, Role role, TeachingStaff teachingStaff) {
         this.username = username;
         this.password = password;
         this.role = role;
-    }
-
-    public Profile(Long id, String username, String password, Role role) {
-        this.id = id;
-        this.username = username;
-        this.password = password;
-        this.role = role;
+        this.teachingStaff = teachingStaff;
     }
 
     public Long getId() {
@@ -72,17 +76,12 @@ public class Profile {
         this.role = role;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Profile profile = (Profile) o;
-        return Objects.equals(id, profile.id) && Objects.equals(username, profile.username) && Objects.equals(password, profile.password) && Objects.equals(role, profile.role);
+    public TeachingStaff getTeachingStaff() {
+        return teachingStaff;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, username, password, role);
+    public void setTeachingStaff(TeachingStaff teachingStaff) {
+        this.teachingStaff = teachingStaff;
     }
 
     @Override

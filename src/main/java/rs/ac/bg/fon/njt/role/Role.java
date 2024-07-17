@@ -11,9 +11,9 @@ import java.util.Objects;
 public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
-    @Column(name = "name", nullable = false)
+    @Column(name = "name", nullable = false, length = 50)
     private String name;
 
     @OneToMany(mappedBy="role")
@@ -24,26 +24,16 @@ public class Role {
     public Role() {
     }
 
-    public Role(String name) {
-        this.name = name;
-    }
-
     public Role(String name, List<Profile> profiles) {
         this.name = name;
         this.profiles = profiles;
     }
 
-    public Role(long id, String name, List<Profile> profiles) {
-        this.id = id;
-        this.name = name;
-        this.profiles = profiles;
-    }
-
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -66,8 +56,7 @@ public class Role {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Role role = (Role) o;
+        if (!(o instanceof Role role)) return false;
         return id == role.id && Objects.equals(name, role.name) && Objects.equals(profiles, role.profiles);
     }
 
