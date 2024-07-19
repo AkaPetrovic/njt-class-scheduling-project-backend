@@ -22,14 +22,15 @@ public class Profile {
     private String password;
 
     @ManyToOne
-    @JoinColumn(nullable = false,
-                foreignKey = @ForeignKey(name="FK_profile_role"))
+    @JoinColumn(name = "role_id",
+                nullable = false,
+                foreignKey = @ForeignKey(name = "FK_profile_role"))
     private Role role;
 
     @OneToOne
-    @JoinColumn(name="teaching_staff_id",
+    @JoinColumn(name = "teaching_staff_id",
                 nullable = false,
-                foreignKey = @ForeignKey(name="FK_profile_teaching_staff"))
+                foreignKey = @ForeignKey(name = "FK_profile_teaching_staff"))
     private TeachingStaff teachingStaff;
 
 
@@ -86,6 +87,6 @@ public class Profile {
 
     @Override
     public String toString() {
-        return username + password;
+        return username;
     }
 }

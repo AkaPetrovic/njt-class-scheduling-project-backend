@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Objects;
 
 @Entity
+@Table(name = "role")
 public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,8 +17,8 @@ public class Role {
     @Column(name = "name", nullable = false, length = 50)
     private String name;
 
-    @OneToMany(mappedBy="role")
-    List<Profile> profiles;
+    @OneToMany(mappedBy = "role")
+    private List<Profile> profiles;
 
 
 

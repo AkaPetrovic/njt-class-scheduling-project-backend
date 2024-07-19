@@ -1,11 +1,13 @@
 package rs.ac.bg.fon.njt.teachingStaff;
 
 import jakarta.persistence.*;
+import rs.ac.bg.fon.njt.classCoveragePlan.ClassCoveragePlan;
 import rs.ac.bg.fon.njt.department.Department;
 import rs.ac.bg.fon.njt.profile.Profile;
 import rs.ac.bg.fon.njt.title.Title;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -30,24 +32,29 @@ public class TeachingStaff {
     private LocalDate birthDate;
 
     @ManyToOne
-    @JoinColumn(nullable = false,
+    @JoinColumn(name = "department_id",
+                nullable = false,
                 foreignKey = @ForeignKey(name="FK_teaching_staff_department"))
     private Department department;
 
     @ManyToOne
-    @JoinColumn(nullable = false,
+    @JoinColumn(name = "title_id",
+                nullable = false,
                 foreignKey = @ForeignKey(name="FK_teaching_staff_title"))
     private Title title;
 
     @OneToOne(mappedBy = "teachingStaff")
     private Profile profile;
 
+    @OneToMany(mappedBy = "teachingStaff")
+    private List<ClassCoveragePlan> classCoveragePlans;
+
 
 
     public TeachingStaff() {
     }
 
-    public TeachingStaff(String name, String surname, String email, LocalDate birthDate, Department department, Title title, Profile profile) {
+    public TeachingStaff(String name, String surname, String email, LocalDate birthDate, Department department, Title title, Profile profile, List<ClassCoveragePlan> classCoveragePlans) {
         this.name = name;
         this.surname = surname;
         this.email = email;
@@ -55,6 +62,7 @@ public class TeachingStaff {
         this.department = department;
         this.title = title;
         this.profile = profile;
+        this.classCoveragePlans = classCoveragePlans;
     }
 
     public Long getId() {
@@ -121,16 +129,24 @@ public class TeachingStaff {
         this.profile = profile;
     }
 
+    public List<ClassCoveragePlan> getClassCoveragePlans() {
+        return classCoveragePlans;
+    }
+
+    public void setClassCoveragePlans(List<ClassCoveragePlan> classCoveragePlans) {
+        this.classCoveragePlans = classCoveragePlans;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof TeachingStaff that)) return false;
-        return Objects.equals(id, that.id) && Objects.equals(name, that.name) && Objects.equals(surname, that.surname) && Objects.equals(email, that.email) && Objects.equals(birthDate, that.birthDate) && Objects.equals(department, that.department) && Objects.equals(title, that.title) && Objects.equals(profile, that.profile);
+        return Objects.equals(id, that.id) && Objects.equals(name, that.name) && Objects.equals(surname, that.surname) && Objects.equals(email, that.email) && Objects.equals(birthDate, that.birthDate) && Objects.equals(department, that.department) && Objects.equals(title, that.title) && Objects.equals(profile, that.profile) && Objects.equals(classCoveragePlans, that.classCoveragePlans);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, surname, email, birthDate, department, title, profile);
+        return Objects.hash(id, name, surname, email, birthDate, department, title, profile, classCoveragePlans);
     }
 
     @Override
@@ -144,6 +160,7 @@ public class TeachingStaff {
                 ", department=" + department +
                 ", title=" + title +
                 ", profile=" + profile +
+                ", classCoveragePlans=" + classCoveragePlans +
                 '}';
     }
 }
