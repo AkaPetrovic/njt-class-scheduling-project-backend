@@ -28,6 +28,10 @@ public class AcademicYear {
     public AcademicYear() {
     }
 
+    public AcademicYear(String name) {
+        this.name = name;
+    }
+
     public AcademicYear(String name, List<AcademicYearSubject> academicYearSubjects, List<ClassCoveragePlan> classCoveragePlans) {
         this.name = name;
         this.academicYearSubjects = academicYearSubjects;

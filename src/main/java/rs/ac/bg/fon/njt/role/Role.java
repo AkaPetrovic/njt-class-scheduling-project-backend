@@ -25,6 +25,10 @@ public class Role {
     public Role() {
     }
 
+    public Role(String name) {
+        this.name = name;
+    }
+
     public Role(String name, List<Profile> profiles) {
         this.name = name;
         this.profiles = profiles;

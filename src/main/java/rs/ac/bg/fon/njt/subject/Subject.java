@@ -29,6 +29,11 @@ public class Subject {
     public Subject() {
     }
 
+    public Subject(String name, Integer espb) {
+        this.name = name;
+        this.espb = espb;
+    }
+
     public Subject(String name, Integer espb, List<AcademicYearSubject> academicYearSubjects, List<ClassCoveragePlan> classCoveragePlans) {
         this.name = name;
         this.espb = espb;

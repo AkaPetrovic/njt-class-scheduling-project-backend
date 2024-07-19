@@ -24,6 +24,10 @@ public class Title {
     public Title() {
     }
 
+    public Title(String title) {
+        this.title = title;
+    }
+
     public Title(String title, List<TeachingStaff> teachingStaff) {
         this.title = title;
         this.teachingStaff = teachingStaff;

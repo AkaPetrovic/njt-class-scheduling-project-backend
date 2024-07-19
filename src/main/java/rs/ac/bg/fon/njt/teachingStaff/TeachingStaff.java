@@ -54,6 +54,16 @@ public class TeachingStaff {
     public TeachingStaff() {
     }
 
+    public TeachingStaff(String name, String surname, String email, LocalDate birthDate, Department department, Title title, Profile profile) {
+        this.name = name;
+        this.surname = surname;
+        this.email = email;
+        this.birthDate = birthDate;
+        this.department = department;
+        this.title = title;
+        this.profile = profile;
+    }
+
     public TeachingStaff(String name, String surname, String email, LocalDate birthDate, Department department, Title title, Profile profile, List<ClassCoveragePlan> classCoveragePlans) {
         this.name = name;
         this.surname = surname;

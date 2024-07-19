@@ -24,6 +24,10 @@ public class Department {
     public Department() {
     }
 
+    public Department(String name) {
+        this.name = name;
+    }
+
     public Department(String name, List<TeachingStaff> teachingStaff) {
         this.name = name;
         this.teachingStaff = teachingStaff;
