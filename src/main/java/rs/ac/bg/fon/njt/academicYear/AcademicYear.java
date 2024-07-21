@@ -17,10 +17,10 @@ public class AcademicYear {
     @Column(name = "name", nullable = false, length = 7)
     private String name;
 
-    @OneToMany(mappedBy = "academicYear")
+    @OneToMany(mappedBy = "academicYear", fetch = FetchType.EAGER)
     private List<AcademicYearSubject> academicYearSubjects;
 
-    @OneToMany(mappedBy = "academicYear")
+    @OneToMany(mappedBy = "academicYear", fetch = FetchType.EAGER)
     private List<ClassCoveragePlan> classCoveragePlans;
 
 
@@ -30,12 +30,6 @@ public class AcademicYear {
 
     public AcademicYear(String name) {
         this.name = name;
-    }
-
-    public AcademicYear(String name, List<AcademicYearSubject> academicYearSubjects, List<ClassCoveragePlan> classCoveragePlans) {
-        this.name = name;
-        this.academicYearSubjects = academicYearSubjects;
-        this.classCoveragePlans = classCoveragePlans;
     }
 
     public Long getId() {

@@ -43,10 +43,10 @@ public class TeachingStaff {
                 foreignKey = @ForeignKey(name="FK_teaching_staff_title"))
     private Title title;
 
-    @OneToOne(mappedBy = "teachingStaff")
+    @OneToOne(mappedBy = "teachingStaff", fetch = FetchType.EAGER)
     private Profile profile;
 
-    @OneToMany(mappedBy = "teachingStaff")
+    @OneToMany(mappedBy = "teachingStaff", fetch = FetchType.EAGER)
     private List<ClassCoveragePlan> classCoveragePlans;
 
 
@@ -54,25 +54,13 @@ public class TeachingStaff {
     public TeachingStaff() {
     }
 
-    public TeachingStaff(String name, String surname, String email, LocalDate birthDate, Department department, Title title, Profile profile) {
+    public TeachingStaff(String name, String surname, String email, LocalDate birthDate, Department department, Title title) {
         this.name = name;
         this.surname = surname;
         this.email = email;
         this.birthDate = birthDate;
         this.department = department;
         this.title = title;
-        this.profile = profile;
-    }
-
-    public TeachingStaff(String name, String surname, String email, LocalDate birthDate, Department department, Title title, Profile profile, List<ClassCoveragePlan> classCoveragePlans) {
-        this.name = name;
-        this.surname = surname;
-        this.email = email;
-        this.birthDate = birthDate;
-        this.department = department;
-        this.title = title;
-        this.profile = profile;
-        this.classCoveragePlans = classCoveragePlans;
     }
 
     public Long getId() {
@@ -167,9 +155,9 @@ public class TeachingStaff {
                 ", surname='" + surname + '\'' +
                 ", email='" + email + '\'' +
                 ", birthDate=" + birthDate +
-                ", department=" + department +
-                ", title=" + title +
-                ", profile=" + profile +
+                ", department=" + department.getName() +
+                ", title=" + title.getTitle() +
+                ", profile=" + (profile != null ? profile.getUsername() : null) +
                 ", classCoveragePlans=" + classCoveragePlans +
                 '}';
     }

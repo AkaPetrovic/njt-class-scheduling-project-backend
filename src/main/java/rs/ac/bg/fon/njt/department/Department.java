@@ -16,7 +16,7 @@ public class Department {
     @Column(name = "name", nullable = false, length = 50)
     private String name;
 
-    @OneToMany(mappedBy = "department")
+    @OneToMany(mappedBy = "department", fetch = FetchType.EAGER)
     private List<TeachingStaff> teachingStaff;
 
 
@@ -26,11 +26,6 @@ public class Department {
 
     public Department(String name) {
         this.name = name;
-    }
-
-    public Department(String name, List<TeachingStaff> teachingStaff) {
-        this.name = name;
-        this.teachingStaff = teachingStaff;
     }
 
     public Long getId() {

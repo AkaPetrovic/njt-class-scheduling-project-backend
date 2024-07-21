@@ -16,11 +16,14 @@ public class ClassCoveragePlan {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name="amount_of_lecture_classes", nullable = false)
-    private Integer amountOfLectureClasses;
+    @Column(name="amount_of_lecture_classes_per_teaching_staff", nullable = false)
+    private Integer amountOfLectureClassesPerTeachingStaff;
 
-    @Column(name="amount_of_practical_classes", nullable = false)
-    private Integer amountOfPracticalClasses;
+    @Column(name="amount_of_practical_classes_per_teaching_staff", nullable = false)
+    private Integer amountOfPracticalClassesPerTeachingStaff;
+
+    @Column(name="amount_of_lab_practical_classes_per_teaching_staff", nullable = false)
+    private Integer amountOfLabPracticalClassesPerTeachingStaff;
 
     @ManyToOne
     @JoinColumn(name = "teaching_staff_id",
@@ -45,9 +48,10 @@ public class ClassCoveragePlan {
     public ClassCoveragePlan() {
     }
 
-    public ClassCoveragePlan(Integer amountOfLectureClasses, Integer amountOfPracticalClasses, TeachingStaff teachingStaff, Subject subject, AcademicYear academicYear) {
-        this.amountOfLectureClasses = amountOfLectureClasses;
-        this.amountOfPracticalClasses = amountOfPracticalClasses;
+    public ClassCoveragePlan(Integer amountOfLectureClassesPerTeachingStaff, Integer amountOfPracticalClassesPerTeachingStaff, Integer amountOfLabPracticalClassesPerTeachingStaff, TeachingStaff teachingStaff, Subject subject, AcademicYear academicYear) {
+        this.amountOfLectureClassesPerTeachingStaff = amountOfLectureClassesPerTeachingStaff;
+        this.amountOfPracticalClassesPerTeachingStaff = amountOfPracticalClassesPerTeachingStaff;
+        this.amountOfLabPracticalClassesPerTeachingStaff = amountOfLabPracticalClassesPerTeachingStaff;
         this.teachingStaff = teachingStaff;
         this.subject = subject;
         this.academicYear = academicYear;
@@ -61,20 +65,28 @@ public class ClassCoveragePlan {
         this.id = id;
     }
 
-    public Integer getAmountOfLectureClasses() {
-        return amountOfLectureClasses;
+    public Integer getAmountOfLectureClassesPerTeachingStaff() {
+        return amountOfLectureClassesPerTeachingStaff;
     }
 
-    public void setAmountOfLectureClasses(Integer amountOfLectureClasses) {
-        this.amountOfLectureClasses = amountOfLectureClasses;
+    public void setAmountOfLectureClassesPerTeachingStaff(Integer amountOfLectureClassesPerTeachingStaff) {
+        this.amountOfLectureClassesPerTeachingStaff = amountOfLectureClassesPerTeachingStaff;
     }
 
-    public Integer getAmountOfPracticalClasses() {
-        return amountOfPracticalClasses;
+    public Integer getAmountOfPracticalClassesPerTeachingStaff() {
+        return amountOfPracticalClassesPerTeachingStaff;
     }
 
-    public void setAmountOfPracticalClasses(Integer amountOfPracticalClasses) {
-        this.amountOfPracticalClasses = amountOfPracticalClasses;
+    public void setAmountOfPracticalClassesPerTeachingStaff(Integer amountOfPracticalClassesPerTeachingStaff) {
+        this.amountOfPracticalClassesPerTeachingStaff = amountOfPracticalClassesPerTeachingStaff;
+    }
+
+    public Integer getAmountOfLabPracticalClassesPerTeachingStaff() {
+        return amountOfLabPracticalClassesPerTeachingStaff;
+    }
+
+    public void setAmountOfLabPracticalClassesPerTeachingStaff(Integer amountOfLabPracticalClassesPerTeachingStaff) {
+        this.amountOfLabPracticalClassesPerTeachingStaff = amountOfLabPracticalClassesPerTeachingStaff;
     }
 
     public TeachingStaff getTeachingStaff() {
@@ -104,25 +116,25 @@ public class ClassCoveragePlan {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof ClassCoveragePlan)) return false;
-        ClassCoveragePlan that = (ClassCoveragePlan) o;
-        return Objects.equals(id, that.id) && Objects.equals(amountOfLectureClasses, that.amountOfLectureClasses) && Objects.equals(amountOfPracticalClasses, that.amountOfPracticalClasses) && Objects.equals(teachingStaff, that.teachingStaff) && Objects.equals(subject, that.subject) && Objects.equals(academicYear, that.academicYear);
+        if (!(o instanceof ClassCoveragePlan that)) return false;
+        return Objects.equals(id, that.id) && Objects.equals(amountOfLectureClassesPerTeachingStaff, that.amountOfLectureClassesPerTeachingStaff) && Objects.equals(amountOfPracticalClassesPerTeachingStaff, that.amountOfPracticalClassesPerTeachingStaff) && Objects.equals(amountOfLabPracticalClassesPerTeachingStaff, that.amountOfLabPracticalClassesPerTeachingStaff) && Objects.equals(teachingStaff, that.teachingStaff) && Objects.equals(subject, that.subject) && Objects.equals(academicYear, that.academicYear);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, amountOfLectureClasses, amountOfPracticalClasses, teachingStaff, subject, academicYear);
+        return Objects.hash(id, amountOfLectureClassesPerTeachingStaff, amountOfPracticalClassesPerTeachingStaff, amountOfLabPracticalClassesPerTeachingStaff, teachingStaff, subject, academicYear);
     }
 
     @Override
     public String toString() {
         return "ClassCoveragePlan{" +
                 "id=" + id +
-                ", amountOfLectureClasses=" + amountOfLectureClasses +
-                ", amountOfPracticalClasses=" + amountOfPracticalClasses +
-                ", teachingStaff=" + teachingStaff +
-                ", subject=" + subject +
-                ", academicYear=" + academicYear +
+                ", amountOfLectureClassesPerTeachingStaff=" + amountOfLectureClassesPerTeachingStaff +
+                ", amountOfPracticalClassesPerTeachingStaff=" + amountOfPracticalClassesPerTeachingStaff +
+                ", amountOfLabPracticalClassesPerTeachingStaff=" + amountOfLabPracticalClassesPerTeachingStaff +
+                ", teachingStaff=" + teachingStaff.getName() + " " + teachingStaff.getSurname() +
+                ", subject=" + subject.getName() +
+                ", academicYear=" + academicYear.getName() +
                 '}';
     }
 }

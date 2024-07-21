@@ -16,7 +16,7 @@ public class Title {
     @Column(name = "title", nullable = false, length = 35)
     private String title;
 
-    @OneToMany(mappedBy = "title")
+    @OneToMany(mappedBy = "title", fetch = FetchType.EAGER)
     private List<TeachingStaff> teachingStaff;
 
 
@@ -26,11 +26,6 @@ public class Title {
 
     public Title(String title) {
         this.title = title;
-    }
-
-    public Title(String title, List<TeachingStaff> teachingStaff) {
-        this.title = title;
-        this.teachingStaff = teachingStaff;
     }
 
     public Long getId() {

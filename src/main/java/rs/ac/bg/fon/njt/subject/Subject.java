@@ -20,10 +20,10 @@ public class Subject {
     @Column(name = "espb", nullable = false)
     private Integer espb;
 
-    @OneToMany(mappedBy = "subject")
+    @OneToMany(mappedBy = "subject", fetch = FetchType.EAGER)
     private List<AcademicYearSubject> academicYearSubjects;
 
-    @OneToMany(mappedBy = "subject")
+    @OneToMany(mappedBy = "subject", fetch = FetchType.EAGER)
     private List<ClassCoveragePlan> classCoveragePlans;
 
     public Subject() {
@@ -32,13 +32,6 @@ public class Subject {
     public Subject(String name, Integer espb) {
         this.name = name;
         this.espb = espb;
-    }
-
-    public Subject(String name, Integer espb, List<AcademicYearSubject> academicYearSubjects, List<ClassCoveragePlan> classCoveragePlans) {
-        this.name = name;
-        this.espb = espb;
-        this.academicYearSubjects = academicYearSubjects;
-        this.classCoveragePlans = classCoveragePlans;
     }
 
     public Long getId() {

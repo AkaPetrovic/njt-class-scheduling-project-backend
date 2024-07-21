@@ -17,7 +17,7 @@ public class Role {
     @Column(name = "name", nullable = false, length = 50)
     private String name;
 
-    @OneToMany(mappedBy = "role")
+    @OneToMany(mappedBy = "role", fetch = FetchType.EAGER)
     private List<Profile> profiles;
 
 
@@ -27,11 +27,6 @@ public class Role {
 
     public Role(String name) {
         this.name = name;
-    }
-
-    public Role(String name, List<Profile> profiles) {
-        this.name = name;
-        this.profiles = profiles;
     }
 
     public Long getId() {
@@ -72,6 +67,10 @@ public class Role {
 
     @Override
     public String toString() {
-        return name;
+        return "Role{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", profiles=" + profiles +
+                '}';
     }
 }

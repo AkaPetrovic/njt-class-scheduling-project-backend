@@ -114,8 +114,8 @@ public class AcademicYearSubject {
                 ", numberOfLectureClasses=" + numberOfLectureClasses +
                 ", numberOfPracticalClasses=" + numberOfPracticalClasses +
                 ", numberOfLabPracticalClasses=" + numberOfLabPracticalClasses +
-                ", academicYear=" + academicYear +
-                ", subject=" + subject +
+                ", academicYear=" + academicYear.getName() +
+                ", subject=" + subject.getName() +
                 '}';
     }
 }

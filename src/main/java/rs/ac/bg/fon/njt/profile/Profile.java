@@ -87,6 +87,12 @@ public class Profile {
 
     @Override
     public String toString() {
-        return username;
+        return "Profile{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", role=" + role.getName() +
+                ", teachingStaff=" + teachingStaff +
+                '}';
     }
 }
