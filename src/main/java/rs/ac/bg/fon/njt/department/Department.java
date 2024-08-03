@@ -1,5 +1,7 @@
 package rs.ac.bg.fon.njt.department;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import rs.ac.bg.fon.njt.teachingStaff.TeachingStaff;
 
@@ -17,6 +19,7 @@ public class Department {
     private String name;
 
     @OneToMany(mappedBy = "department", fetch = FetchType.EAGER)
+    @JsonIgnore
     private List<TeachingStaff> teachingStaff;
 
 

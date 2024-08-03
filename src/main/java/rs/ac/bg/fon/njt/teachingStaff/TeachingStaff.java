@@ -1,5 +1,8 @@
 package rs.ac.bg.fon.njt.teachingStaff;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import rs.ac.bg.fon.njt.classCoveragePlan.ClassCoveragePlan;
 import rs.ac.bg.fon.njt.department.Department;
@@ -44,9 +47,11 @@ public class TeachingStaff {
     private Title title;
 
     @OneToOne(mappedBy = "teachingStaff", fetch = FetchType.EAGER)
+    @JsonIgnore
     private Profile profile;
 
     @OneToMany(mappedBy = "teachingStaff", fetch = FetchType.EAGER)
+    @JsonIgnore
     private List<ClassCoveragePlan> classCoveragePlans;
 
 

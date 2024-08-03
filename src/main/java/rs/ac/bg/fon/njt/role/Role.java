@@ -1,6 +1,7 @@
 package rs.ac.bg.fon.njt.role;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import rs.ac.bg.fon.njt.profile.Profile;
 
@@ -18,6 +19,7 @@ public class Role {
     private String name;
 
     @OneToMany(mappedBy = "role", fetch = FetchType.EAGER)
+    @JsonIgnore
     private List<Profile> profiles;
 
 

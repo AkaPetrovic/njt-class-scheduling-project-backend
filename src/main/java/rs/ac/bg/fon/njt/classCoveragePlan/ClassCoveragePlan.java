@@ -1,5 +1,6 @@
 package rs.ac.bg.fon.njt.classCoveragePlan;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import rs.ac.bg.fon.njt.academicYear.AcademicYear;
 import rs.ac.bg.fon.njt.subject.Subject;

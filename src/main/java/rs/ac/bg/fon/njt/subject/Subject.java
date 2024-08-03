@@ -1,5 +1,6 @@
 package rs.ac.bg.fon.njt.subject;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import rs.ac.bg.fon.njt.academicYearSubject.AcademicYearSubject;
 import rs.ac.bg.fon.njt.classCoveragePlan.ClassCoveragePlan;
@@ -21,9 +22,11 @@ public class Subject {
     private Integer espb;
 
     @OneToMany(mappedBy = "subject", fetch = FetchType.EAGER)
+    @JsonIgnore
     private List<AcademicYearSubject> academicYearSubjects;
 
     @OneToMany(mappedBy = "subject", fetch = FetchType.EAGER)
+    @JsonIgnore
     private List<ClassCoveragePlan> classCoveragePlans;
 
     public Subject() {

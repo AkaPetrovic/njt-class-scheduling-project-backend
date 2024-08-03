@@ -1,5 +1,7 @@
 package rs.ac.bg.fon.njt.title;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import rs.ac.bg.fon.njt.teachingStaff.TeachingStaff;
 
@@ -17,6 +19,7 @@ public class Title {
     private String title;
 
     @OneToMany(mappedBy = "title", fetch = FetchType.EAGER)
+    @JsonIgnore
     private List<TeachingStaff> teachingStaff;
 
 
