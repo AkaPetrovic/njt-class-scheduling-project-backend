@@ -18,7 +18,7 @@ public class Profile {
     @Column(name = "username", nullable = false, length = 30)
     private String username;
 
-    @Column(name = "password", nullable = false, length = 40)
+    @Column(name = "password", nullable = false)
     private String password;
 
     @ManyToOne
