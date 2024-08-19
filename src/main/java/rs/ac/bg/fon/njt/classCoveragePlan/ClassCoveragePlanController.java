@@ -32,8 +32,6 @@ public class ClassCoveragePlanController {
     @PutMapping(path = "/class-coverage-plans/edit")
     @PreAuthorize("hasAnyAuthority('ADMIN')")
     public ResponseEntity<String> updateClassCoveragePlan(@RequestBody ClassCoveragePlan classCoveragePlan) {
-        System.out.println(classCoveragePlan);
-//        return new ResponseEntity<>("Success: Class coverage plan edited successfully.", HttpStatus.OK);
         ClassCoveragePlan updatedClassCoveragePlan = classCoveragePlanService.updateClassCoveragePlan(classCoveragePlan);
         if (updatedClassCoveragePlan != null) {
             return new ResponseEntity<>("Success: Class coverage plan updated successfully.", HttpStatus.OK);
@@ -46,8 +44,6 @@ public class ClassCoveragePlanController {
     @PostMapping(path = "/class-coverage-plans/add")
     @PreAuthorize("hasAnyAuthority('ADMIN')")
     public ResponseEntity<String> addClassCoveragePlan(@RequestBody ClassCoveragePlan classCoveragePlan) {
-        System.out.println(classCoveragePlan);
-//        return new ResponseEntity<>("Success: Class coverage plan added successfully.", HttpStatus.OK);
         ClassCoveragePlan addedClassCoveragePlan = classCoveragePlanService.addClassCoveragePlan(classCoveragePlan);
         if (addedClassCoveragePlan != null) {
             return new ResponseEntity<>("Success: Class coverage plan added successfully.", HttpStatus.CREATED);
@@ -60,8 +56,6 @@ public class ClassCoveragePlanController {
     @DeleteMapping(path = "/class-coverage-plans/delete")
     @PreAuthorize("hasAnyAuthority('ADMIN')")
     public ResponseEntity<String> deleteClassCoveragePlan(@RequestBody ClassCoveragePlan classCoveragePlan) {
-        System.out.println(classCoveragePlan);
-//        return new ResponseEntity<>("Success: Class coverage plan deleted successfully.", HttpStatus.OK);
         classCoveragePlanService.deleteClassCoveragePlan(classCoveragePlan);
         return new ResponseEntity<>("Success: Class coverage plan deleted successfully.", HttpStatus.OK);
     }

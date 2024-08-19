@@ -4,15 +4,28 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import rs.ac.bg.fon.njt.academicYear.AcademicYear;
 import rs.ac.bg.fon.njt.academicYear.AcademicYearRepository;
+import rs.ac.bg.fon.njt.academicYearSubject.AcademicYearSubject;
 import rs.ac.bg.fon.njt.academicYearSubject.AcademicYearSubjectRepository;
+import rs.ac.bg.fon.njt.classCoveragePlan.ClassCoveragePlan;
 import rs.ac.bg.fon.njt.classCoveragePlan.ClassCoveragePlanRepository;
+import rs.ac.bg.fon.njt.department.Department;
 import rs.ac.bg.fon.njt.department.DepartmentRepository;
+import rs.ac.bg.fon.njt.profile.Profile;
 import rs.ac.bg.fon.njt.profile.ProfileRepository;
+import rs.ac.bg.fon.njt.role.Role;
 import rs.ac.bg.fon.njt.role.RoleRepository;
+import rs.ac.bg.fon.njt.subject.Subject;
 import rs.ac.bg.fon.njt.subject.SubjectRepository;
+import rs.ac.bg.fon.njt.teachingStaff.TeachingStaff;
 import rs.ac.bg.fon.njt.teachingStaff.TeachingStaffRepository;
+import rs.ac.bg.fon.njt.title.Title;
 import rs.ac.bg.fon.njt.title.TitleRepository;
+
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Optional;
 
 @SpringBootApplication
 public class NjtProjectApplication {
@@ -32,10 +45,10 @@ public class NjtProjectApplication {
 							 AcademicYearSubjectRepository academicYearSubjectRepository,
 							 ClassCoveragePlanRepository classCoveragePlanRepository){
 		return args -> {
-//			Role role1 = new Role("administrator", new ArrayList<>());
+//			Role role1 = new Role("admin");
 //			roleRepository.save(role1);
 //
-//			Role role2 = new Role("user", new ArrayList<>());
+//			Role role2 = new Role("user");
 //			roleRepository.save(role2);
 //
 //			for(Role role : roleRepository.findAll()){
@@ -121,7 +134,7 @@ public class NjtProjectApplication {
 //
 //			Profile profile1 = new Profile("Aleksandar", "aca123", role1, teachingStaff1);
 //			profileRepository.save(profile1);
-
+//
 //			Optional<TeachingStaff> teachingStaffOptional2 = teachingStaffRepository.findById(1L);
 //			TeachingStaff teachingStaff2 = teachingStaffOptional2.get();
 //
@@ -169,7 +182,7 @@ public class NjtProjectApplication {
 //
 //			ClassCoveragePlan classCoveragePlan1 = new ClassCoveragePlan(12, 8, 0, teachingStaff1, subject1, academicYear1);
 //			classCoveragePlanRepository.save(classCoveragePlan1);
-
+//
 //			Optional<Subject> subjectOptional2 = subjectRepository.findById(2L);
 //			Subject subject2 = subjectOptional2.get();
 //
