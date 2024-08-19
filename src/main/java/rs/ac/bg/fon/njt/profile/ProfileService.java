@@ -1,10 +1,11 @@
 package rs.ac.bg.fon.njt.profile;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.stereotype.Service;
+import rs.ac.bg.fon.njt.security.model.UserDetailsImpl;
 import rs.ac.bg.fon.njt.security.service.JWTService;
 
 import java.util.List;
@@ -29,7 +30,13 @@ public class ProfileService {
         Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(profile.getUsername(), profile.getPassword()));
 
         if(authentication.isAuthenticated()) {
-            return jwtService.generateToken(profile.getUsername());
+            UserDetailsImpl principal = (UserDetailsImpl) authentication.getPrincipal();
+
+            String username = principal.getUsername();
+            GrantedAuthority[] authorities = principal.getAuthorities().toArray(new GrantedAuthority[0]);
+            String authority = authorities[0].getAuthority();
+
+            return jwtService.generateToken(username, authority);
         }
 
         return null;

@@ -2,6 +2,7 @@ package rs.ac.bg.fon.njt.classCoveragePlan;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,17 +17,20 @@ public class ClassCoveragePlanController {
     }
 
     @GetMapping(path = "/class-coverage-plans")
+    @PreAuthorize("hasAnyAuthority('ADMIN', 'USER')")
     public List<ClassCoveragePlan> getAllClassCoveragePlans() {
         return classCoveragePlanService.getAllClassCoveragePlans();
     }
 
     @GetMapping(path = "/class-coverage-plans/{id}")
+    @PreAuthorize("hasAnyAuthority('ADMIN', 'USER')")
     public ClassCoveragePlan getClassCoveragePlanById(@PathVariable Long id) {
         return classCoveragePlanService.getClassCoveragePlanById(id);
     }
 
     @CrossOrigin(origins = "http://localhost:3000")
     @PutMapping(path = "/class-coverage-plans/edit")
+    @PreAuthorize("hasAnyAuthority('ADMIN')")
     public ResponseEntity<String> updateClassCoveragePlan(@RequestBody ClassCoveragePlan classCoveragePlan) {
         System.out.println(classCoveragePlan);
 //        return new ResponseEntity<>("Success: Class coverage plan edited successfully.", HttpStatus.OK);
@@ -40,6 +44,7 @@ public class ClassCoveragePlanController {
 
     @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping(path = "/class-coverage-plans/add")
+    @PreAuthorize("hasAnyAuthority('ADMIN')")
     public ResponseEntity<String> addClassCoveragePlan(@RequestBody ClassCoveragePlan classCoveragePlan) {
         System.out.println(classCoveragePlan);
 //        return new ResponseEntity<>("Success: Class coverage plan added successfully.", HttpStatus.OK);
@@ -53,6 +58,7 @@ public class ClassCoveragePlanController {
 
     @CrossOrigin(origins = "http://localhost:3000")
     @DeleteMapping(path = "/class-coverage-plans/delete")
+    @PreAuthorize("hasAnyAuthority('ADMIN')")
     public ResponseEntity<String> deleteClassCoveragePlan(@RequestBody ClassCoveragePlan classCoveragePlan) {
         System.out.println(classCoveragePlan);
 //        return new ResponseEntity<>("Success: Class coverage plan deleted successfully.", HttpStatus.OK);

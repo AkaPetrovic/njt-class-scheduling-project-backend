@@ -4,29 +4,15 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import rs.ac.bg.fon.njt.academicYear.AcademicYear;
 import rs.ac.bg.fon.njt.academicYear.AcademicYearRepository;
-import rs.ac.bg.fon.njt.academicYearSubject.AcademicYearSubject;
 import rs.ac.bg.fon.njt.academicYearSubject.AcademicYearSubjectRepository;
-import rs.ac.bg.fon.njt.classCoveragePlan.ClassCoveragePlan;
 import rs.ac.bg.fon.njt.classCoveragePlan.ClassCoveragePlanRepository;
-import rs.ac.bg.fon.njt.department.Department;
 import rs.ac.bg.fon.njt.department.DepartmentRepository;
-import rs.ac.bg.fon.njt.profile.Profile;
 import rs.ac.bg.fon.njt.profile.ProfileRepository;
-import rs.ac.bg.fon.njt.role.Role;
 import rs.ac.bg.fon.njt.role.RoleRepository;
-import rs.ac.bg.fon.njt.subject.Subject;
 import rs.ac.bg.fon.njt.subject.SubjectRepository;
-import rs.ac.bg.fon.njt.teachingStaff.TeachingStaff;
 import rs.ac.bg.fon.njt.teachingStaff.TeachingStaffRepository;
-import rs.ac.bg.fon.njt.title.Title;
 import rs.ac.bg.fon.njt.title.TitleRepository;
-
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Optional;
 
 @SpringBootApplication
 public class NjtProjectApplication {
@@ -135,6 +121,16 @@ public class NjtProjectApplication {
 //
 //			Profile profile1 = new Profile("Aleksandar", "aca123", role1, teachingStaff1);
 //			profileRepository.save(profile1);
+
+//			Optional<TeachingStaff> teachingStaffOptional2 = teachingStaffRepository.findById(1L);
+//			TeachingStaff teachingStaff2 = teachingStaffOptional2.get();
+//
+//			Optional<Role> roleOptional2 = roleRepository.findById(2L);
+//			Role role2 = roleOptional2.get();
+//
+//			Profile profile2 = new Profile("Aleksa", "aka123", role2, teachingStaff2);
+//			profileRepository.save(profile2);
+
 //
 //			for(Profile profile : profileRepository.findAll()){
 //				System.out.println(profile);
