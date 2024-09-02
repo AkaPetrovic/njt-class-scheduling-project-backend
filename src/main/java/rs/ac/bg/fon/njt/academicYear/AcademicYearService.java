@@ -15,4 +15,8 @@ public class AcademicYearService {
     public List<AcademicYear> getAllAcademicYears() {
         return academicYearRepository.findAll();
     }
+
+    public AcademicYear getAcademicYearByName(String name) {
+        return academicYearRepository.getAcademicYearByName(name);
+    }
 }

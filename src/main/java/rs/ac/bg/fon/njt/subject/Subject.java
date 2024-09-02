@@ -9,7 +9,9 @@ import java.util.List;
 import java.util.Objects;
 
 @Entity
-@Table(name = "subject")
+@Table(name = "subject", uniqueConstraints = {
+        @UniqueConstraint(columnNames = "name", name = "UNIQUE_name")
+})
 public class Subject {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,6 +22,15 @@ public class Subject {
 
     @Column(name = "espb", nullable = false)
     private Integer espb;
+
+    @Column(name = "number_of_lecture_classes", nullable = false)
+    private Integer numberOfLectureClasses;
+
+    @Column(name = "number_of_practical_classes", nullable = false)
+    private Integer numberOfPracticalClasses;
+
+    @Column(name = "number_of_lab_practical_classes", nullable = false)
+    private Integer numberOfLabPracticalClasses;
 
     @OneToMany(mappedBy = "subject", fetch = FetchType.EAGER)
     @JsonIgnore
@@ -32,9 +43,12 @@ public class Subject {
     public Subject() {
     }
 
-    public Subject(String name, Integer espb) {
+    public Subject(String name, Integer espb, Integer numberOfLectureClasses, Integer numberOfPracticalClasses, Integer numberOfLabPracticalClasses) {
         this.name = name;
         this.espb = espb;
+        this.numberOfLectureClasses = numberOfLectureClasses;
+        this.numberOfPracticalClasses = numberOfPracticalClasses;
+        this.numberOfLabPracticalClasses = numberOfLabPracticalClasses;
     }
 
     public Long getId() {
@@ -61,6 +75,30 @@ public class Subject {
         this.espb = espb;
     }
 
+    public Integer getNumberOfLectureClasses() {
+        return numberOfLectureClasses;
+    }
+
+    public void setNumberOfLectureClasses(Integer numberOfLectureClasses) {
+        this.numberOfLectureClasses = numberOfLectureClasses;
+    }
+
+    public Integer getNumberOfPracticalClasses() {
+        return numberOfPracticalClasses;
+    }
+
+    public void setNumberOfPracticalClasses(Integer numberOfPracticalClasses) {
+        this.numberOfPracticalClasses = numberOfPracticalClasses;
+    }
+
+    public Integer getNumberOfLabPracticalClasses() {
+        return numberOfLabPracticalClasses;
+    }
+
+    public void setNumberOfLabPracticalClasses(Integer numberOfLabPracticalClasses) {
+        this.numberOfLabPracticalClasses = numberOfLabPracticalClasses;
+    }
+
     public List<AcademicYearSubject> getAcademicYearSubjects() {
         return academicYearSubjects;
     }
@@ -81,12 +119,12 @@ public class Subject {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Subject subject)) return false;
-        return Objects.equals(id, subject.id) && Objects.equals(name, subject.name) && Objects.equals(espb, subject.espb) && Objects.equals(academicYearSubjects, subject.academicYearSubjects) && Objects.equals(classCoveragePlans, subject.classCoveragePlans);
+        return Objects.equals(id, subject.id) && Objects.equals(name, subject.name) && Objects.equals(espb, subject.espb) && Objects.equals(numberOfLectureClasses, subject.numberOfLectureClasses) && Objects.equals(numberOfPracticalClasses, subject.numberOfPracticalClasses) && Objects.equals(numberOfLabPracticalClasses, subject.numberOfLabPracticalClasses) && Objects.equals(academicYearSubjects, subject.academicYearSubjects) && Objects.equals(classCoveragePlans, subject.classCoveragePlans);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, espb, academicYearSubjects, classCoveragePlans);
+        return Objects.hash(id, name, espb, numberOfLectureClasses, numberOfPracticalClasses, numberOfLabPracticalClasses, academicYearSubjects, classCoveragePlans);
     }
 
     @Override
@@ -95,6 +133,9 @@ public class Subject {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", espb=" + espb +
+                ", numberOfLectureClasses=" + numberOfLectureClasses +
+                ", numberOfPracticalClasses=" + numberOfPracticalClasses +
+                ", numberOfLabPracticalClasses=" + numberOfLabPracticalClasses +
                 ", academicYearSubjects=" + academicYearSubjects +
                 ", classCoveragePlans=" + classCoveragePlans +
                 '}';

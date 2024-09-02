@@ -15,4 +15,8 @@ public class SubjectService {
     public List<Subject> getAllSubjects() {
         return subjectRepository.findAll();
     }
+
+    public Subject getSubjectByName(String name) {
+        return subjectRepository.getSubjectByName(name);
+    }
 }

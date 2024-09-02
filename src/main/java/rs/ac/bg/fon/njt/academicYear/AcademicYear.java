@@ -9,7 +9,9 @@ import java.util.List;
 import java.util.Objects;
 
 @Entity
-@Table(name = "academic_year")
+@Table(name = "academic_year", uniqueConstraints = {
+        @UniqueConstraint(columnNames = "name", name = "UNIQUE_name")
+})
 public class AcademicYear {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

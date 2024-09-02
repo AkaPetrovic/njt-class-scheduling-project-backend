@@ -37,4 +37,8 @@ public class ClassCoveragePlanService {
     public void deleteClassCoveragePlan(ClassCoveragePlan classCoveragePlan) {
         classCoveragePlanRepository.deleteById(classCoveragePlan.getId());
     }
+
+    public List<ClassCoveragePlan> getClassCoveragePlansByAcademicYearNameAndBySubjectName(String academicYearName, String subjectName) {
+        return classCoveragePlanRepository.findByAcademicYear_NameAndSubject_Name(academicYearName, subjectName);
+    }
 }

@@ -59,4 +59,11 @@ public class ClassCoveragePlanController {
         classCoveragePlanService.deleteClassCoveragePlan(classCoveragePlan);
         return new ResponseEntity<>("Success: Class coverage plan deleted successfully.", HttpStatus.OK);
     }
+
+    @CrossOrigin(origins = "http://localhost:3000")
+    @GetMapping(path = "/class-coverage-plans/{academicYearName}/{subjectName}")
+    @PreAuthorize("hasAnyAuthority('ADMIN', 'USER')")
+    public List<ClassCoveragePlan> getClassCoveragePlansByAcademicYearNameAndBySubjectName(@PathVariable String academicYearName, @PathVariable String subjectName) {
+        return classCoveragePlanService.getClassCoveragePlansByAcademicYearNameAndBySubjectName(academicYearName.replace("-", "/"), subjectName);
+    }
 }

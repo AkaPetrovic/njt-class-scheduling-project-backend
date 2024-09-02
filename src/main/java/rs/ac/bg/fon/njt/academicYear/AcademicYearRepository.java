@@ -5,4 +5,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface AcademicYearRepository extends JpaRepository<AcademicYear, Long> {
+    AcademicYear getAcademicYearByName(String name);
 }
